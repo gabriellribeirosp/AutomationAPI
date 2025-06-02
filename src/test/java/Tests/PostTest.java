@@ -22,3 +22,15 @@ public class PostTest {
                 .statusCode(201);
     }
 }
+@Test
+    public void criarPostComDadosInvalidos() {
+        String body = "{}"; // Corpo vazio
+
+        given()
+            .contentType(ContentType.JSON)
+            .body(body)
+            .when()
+            .post("https://jsonplaceholder.typicode.com/posts")
+            .then()
+            .statusCode(400); // Esperado: requisição inválida (depende da API)
+    }

@@ -40,3 +40,12 @@ public class GetPostTest {
                 .body("title", not(isEmptyString()));
     }
 }
+
+@Test
+    public void validarGetDePostInexistente() {
+        given()
+            .when()
+            .get("https://jsonplaceholder.typicode.com/posts/9999")
+            .then()
+            .statusCode(404);
+    }

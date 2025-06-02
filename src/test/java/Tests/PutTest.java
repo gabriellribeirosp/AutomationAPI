@@ -22,3 +22,21 @@ public class PutTest {
                 .statusCode(200);
     }
 }
+
+@Test
+    public void atualizarPostComIdInvalido() {
+        String body = "{\n" +
+                      "  \"id\": \"abc\",\n" +
+                      "  \"title\": \"falha\",\n" +
+                      "  \"body\": \"dados inválidos\",\n" +
+                      "  \"userId\": 1\n" +
+                      "}";
+
+        given()
+            .contentType("application/json")
+            .body(body)
+            .when()
+            .put("https://jsonplaceholder.typicode.com/posts/abc")
+            .then()
+            .statusCode(400); // Esperado: erro de requisição
+    }

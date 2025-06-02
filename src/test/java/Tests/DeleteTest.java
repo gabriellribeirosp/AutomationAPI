@@ -10,3 +10,11 @@ public class DeleteTest {
                 .statusCode(200); // ou 204 dependendo da API
     }
 }
+
+@Test
+    public void deletarPostInexistente() {
+        when()
+                .delete("https://jsonplaceholder.typicode.com/posts/9999")
+                .then()
+                .statusCode(404); // Esperado: recurso não encontrado
+    }
